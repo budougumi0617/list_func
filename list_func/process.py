@@ -17,14 +17,16 @@ def process(src: str) -> list[str]:
     return results
 
 
-def walk(root: str) -> list[str]:
+def walk(path: str, module_name: str) -> list[str]:
     results: list[str] = []
-    for cur_dir, dirs, files in os.walk(root):
+    for cur_dir, dirs, files in os.walk(path):
         for file in files:
             _, ext = os.path.splitext(file)
             if not file.startswith('test_') and ext == '.py':
                 file_path = os.path.join(cur_dir, file)
-                module_path = file_path.replace(root, '').replace('/', '.').removeprefix('.').removesuffix('.py')
+                module_path = file_path.replace(path, '').replace('/', '.').removeprefix('.').removesuffix('.py')
+                if module_name:
+                    module_path = '.'.join([module_name, module_path])
                 with open(file_path, encoding='utf-8') as f:
                     results.extend([f'{module_path}:{s}' for s in process(f.read())])
     return results

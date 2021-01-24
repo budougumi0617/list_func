@@ -38,3 +38,18 @@ def test_walk():
         'lib.dir1.sample:TestClass.test_method2',
         'lib.dir1.sample:func1',
     ]
+
+
+def test_walk2():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    my_data_path = os.path.join(current_dir, 'testdata')
+
+    assert walk(my_data_path, 'root') == [
+        'root.lib.dir2.foo_bar:FooClass.test_method1',
+        'root.lib.dir2.foo_bar:FooClass.test_method2',
+        'root.lib.dir2.foo_bar:BarClass.test_method1',
+        'root.lib.dir2.foo_bar:BarClass.test_method2',
+        'root.lib.dir1.sample:TestClass.test_method1',
+        'root.lib.dir1.sample:TestClass.test_method2',
+        'root.lib.dir1.sample:func1',
+    ]
