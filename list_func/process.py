@@ -11,7 +11,7 @@ def process(src: str) -> list[str]:
             results.append(node.name)
         elif isinstance(node, ClassDef):
             for cnode in node.body:
-                if isinstance(cnode, FunctionDef):
+                if isinstance(cnode, FunctionDef) and cnode.name != '__init__':
                     results.append(f'{node.name}.{cnode.name}')
 
     return results

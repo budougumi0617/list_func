@@ -8,6 +8,9 @@ def test_process():
 class TestClass:
     x = "変数1"
 
+    def __init__(self, *args, **kwargs):
+        print('initialized')
+
     def test_method1(self):
         print(self.x)
 
