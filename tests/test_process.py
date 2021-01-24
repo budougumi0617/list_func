@@ -30,11 +30,11 @@ def test_walk():
     my_data_path = os.path.join(current_dir, 'testdata')
 
     assert walk(my_data_path) == [
-        'FooClass.test_method1',
-        'FooClass.test_method2',
-        'BarClass.test_method1',
-        'BarClass.test_method2',
-        'TestClass.test_method1',
-        'TestClass.test_method2',
-        'func1',
+        'lib.dir2.foo_bar:FooClass.test_method1',
+        'lib.dir2.foo_bar:FooClass.test_method2',
+        'lib.dir2.foo_bar:BarClass.test_method1',
+        'lib.dir2.foo_bar:BarClass.test_method2',
+        'lib.dir1.sample:TestClass.test_method1',
+        'lib.dir1.sample:TestClass.test_method2',
+        'lib.dir1.sample:func1',
     ]

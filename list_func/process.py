@@ -24,6 +24,7 @@ def walk(root: str) -> list[str]:
             _, ext = os.path.splitext(file)
             if not file.startswith('test_') and ext == '.py':
                 file_path = os.path.join(cur_dir, file)
+                module_path = file_path.replace(root, '').replace('/', '.').removeprefix('.').removesuffix('.py')
                 with open(file_path, encoding='utf-8') as f:
-                    results.extend(process(f.read()))
+                    results.extend([f'{module_path}:{s}' for s in process(f.read())])
     return results
