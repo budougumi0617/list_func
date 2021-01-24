@@ -11,6 +11,9 @@ class TestClass:
     def __init__(self, *args, **kwargs):
         print('initialized')
 
+    async def async_method(self):
+        print("Async!")
+
     def test_method1(self):
         print(self.x)
 
@@ -22,6 +25,7 @@ def func1(arg1):
     '''
 
     assert process(src) == [
+        'TestClass.async_method',
         'TestClass.test_method1',
         'TestClass.test_method2',
         'func1'
@@ -32,7 +36,7 @@ def test_walk():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     my_data_path = os.path.join(current_dir, 'testdata')
 
-    assert walk(my_data_path) == [
+    assert walk(my_data_path, '') == [
         'lib.dir2.foo_bar:FooClass.test_method1',
         'lib.dir2.foo_bar:FooClass.test_method2',
         'lib.dir2.foo_bar:BarClass.test_method1',
