@@ -1,4 +1,6 @@
-from list_func.process import process
+import os
+
+from list_func.process import process, walk
 
 
 def test_process():
@@ -20,4 +22,19 @@ def func1(arg1):
         'TestClass.test_method1',
         'TestClass.test_method2',
         'func1'
+    ]
+
+
+def test_walk():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    my_data_path = os.path.join(current_dir, 'testdata')
+
+    assert walk(my_data_path) == [
+        'FooClass.test_method1',
+        'FooClass.test_method2',
+        'BarClass.test_method1',
+        'BarClass.test_method2',
+        'TestClass.test_method1',
+        'TestClass.test_method2',
+        'func1',
     ]
