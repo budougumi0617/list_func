@@ -42,7 +42,6 @@ def test_walk():
         'lib.dir2.foo_bar:BarClass.test_method1',
         'lib.dir2.foo_bar:BarClass.test_method2',
         'lib.dir1.sample:TestClass.test_method1',
-        'lib.dir1.sample:TestClass.test_method2',
         'lib.dir1.sample:func1',
     ]
 

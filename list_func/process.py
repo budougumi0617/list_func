@@ -11,7 +11,10 @@ def process(src: str) -> list[str]:
             results.append(node.name)
         elif isinstance(node, ClassDef):
             for cnode in node.body:
-                if (isinstance(cnode, FunctionDef) or isinstance(cnode, AsyncFunctionDef)) and cnode.name != '__init__':
+                if (
+                        isinstance(cnode, FunctionDef) or
+                        isinstance(cnode, AsyncFunctionDef)
+                ) and not cnode.name.startswith('__') and len(cnode.decorator_list) == 0:
                     results.append(f'{node.name}.{cnode.name}')
 
     return results
