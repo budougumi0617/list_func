@@ -1,6 +1,6 @@
 import argparse
 
-from process import walk
+from list_func.process import walk
 
 def main():
     parser = argparse.ArgumentParser(description="list function/method in modules")
