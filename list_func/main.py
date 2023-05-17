@@ -1,8 +1,8 @@
 import argparse
 
-from process import walk
+from list_func.process import walk
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description="list function/method in modules")
     parser.add_argument('--dir')
     parser.add_argument('--module')
@@ -11,3 +11,7 @@ if __name__ == '__main__':
         print(' '.join(walk('./', str(args.module))))
     else:
         print(' '.join(walk(str(args.dir), str(args.module))))
+
+
+if __name__ == '__main__':
+    main()
